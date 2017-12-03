@@ -13,17 +13,17 @@
         <tr>
         <div class="form-group">
           <td><label for="email">Email address</label></td>
-          <td><input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="vm.credentials.email"></td>
+          <td><input type="email" class="form-control" id="email" [(ngModel)]="emailtoadd2" name = 'username2'  placeholder="Enter email" ng-model="vm.credentials.email"></td>
         </div>
         </tr>
         <tr>
         <div class="form-group">
          <td><label for="password">Password</label></td>
-          <td><input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.credentials.password"></td>
+          <td><input type="password" class="form-control" [(ngModel)]="passwordtoadd2" name = 'password2'  id="password" placeholder="Password" ng-model="vm.credentials.password"></td>
         </div>
         </tr>
       </table>
-        <button type="submit" class="btn btn-default">Sign in!</button>
+        <button type="submit" class="btn btn-default"  (click) = "loginUser()">Sign in!</button>
         
       </form>
 

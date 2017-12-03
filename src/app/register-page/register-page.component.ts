@@ -17,15 +17,16 @@ export class RegisterPageComponent implements OnInit {
     
   }
     registerUser(){
-   if(!(Boolean(this.passwordtoadd))) alert("Please input a valid password!");
+      if(!(Boolean(this.passwordtoadd))) alert("Please input a valid password!"); // If password isn't valid
    
-   else if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.emailtoadd)) {
-     this.registerService.addUser(this.emailtoadd,this.passwordtoadd);
-   }
-   else (alert("Please input a valid email!"))
+       else if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.emailtoadd)) { // If it is a valid email
+         this.registerService.addUser(this.emailtoadd,this.passwordtoadd);
+        }  
+      else (alert("Please input a valid email!")) //If it is not a valid Email
    
   };
   ngOnInit() {
+    this.registerService.onBegin();
   }
 
 }

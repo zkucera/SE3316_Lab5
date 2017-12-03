@@ -51,7 +51,7 @@ router.route('/users1')
     // create a bear (accessed at POST http://localhost:8080/api/bears)
   
     .post(function(req, res) {
-     res.setHeader("Access-Control-Allow-Origin", "http://lab5-zkucera.c9users.io");
+     
       console.log(req.body);
      
         
@@ -80,28 +80,33 @@ router.route('/users1')
             res.json(users);
         });
     })
-
+        
     
     .put(function(req, res) {
-         res.setHeader("Access-Control-Allow-Origin", "http://lab5-zkucera.c9users.io");
-        // use our bear model to find the bear we want
-        User.findById(req.params.user_id, function(err, user) {
 
-            if (err)
-                res.send(err);
+      
+    if (err) throw err;
 
-            user.name = req.body.name;  // update the bears info
+    // fetch user and test password verification
+    User.findOne({ username: req.body.emailb }, function(err, user) {
+        if (err) throw err;
 
-            // save the bear
-            user.save(function(err) {
-                if (err)
-                    res.send(err);
-
-                res.json({ message: 'User updated!' });
-            });
-
+        // test a matching password
+        user.comparePassword(req.body.passwordb, function(err, isMatch) {
+            if (err) throw err;
+            console.log('Password123:', isMatch); // -> Password123: true
         });
+
+        
+    });
+
+        
+        
+        
+        
     })
+    
+  
     
     .delete(function(req, res) {
         res.setHeader("Access-Control-Allow-Origin", "*");
