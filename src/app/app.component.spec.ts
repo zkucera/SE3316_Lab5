@@ -4,6 +4,7 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
+        WelcomePageComponent
         AppComponent
       ],
     }).compileComponents();
