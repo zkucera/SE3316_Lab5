@@ -27,7 +27,7 @@ public onBegin(){
 
 public verifyUser(email2, password2){
       
-       for (var i - 0; i < emails.length; i ++){
+       for (var i = 0; i < emails.length; i ++){
          if(email2 == emails[i]){
            if (passwords[i] == password2) alert('login successful')
            else alert('invalid login')
